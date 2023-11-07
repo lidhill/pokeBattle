@@ -2,7 +2,7 @@
 import React from 'react';
 import PokemonList from './PokemonList';
 import SearchBox from './SearchBox';
-import { pokemons } from './pokemonData';
+import { pokemons } from './pokemons';
 import Scroll from './Scroll';
 import './App.css';
 
