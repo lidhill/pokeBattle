@@ -1,4 +1,4 @@
-//pokemonData.js
+//pokemons.js
 export const pokemons = [
   {
     id: 1,

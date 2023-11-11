@@ -8,7 +8,7 @@ const SearchBox = ({ searchChange }) => {
         className='pa3 ba b--green bg-lightest-blue'
         type='search'
         placeholder='search pokemons'
-        onChange={searchChange}
+        onChange={ searchChange }
       />
     </div>
   );
