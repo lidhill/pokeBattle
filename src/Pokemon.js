@@ -13,6 +13,8 @@ const Pokemon = ({ name, id, baseScore, hasHighestBaseExperience }) => {
     paddedId = `${parsedId}`;
   }
 
+  const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+
   return (
     <div className={`tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5 ${hasHighestBaseExperience ? 'green-border' : ''}`}>
       {hasHighestBaseExperience && <div className="win-text">Winner!</div>}
@@ -21,7 +23,7 @@ const Pokemon = ({ name, id, baseScore, hasHighestBaseExperience }) => {
         alt={name}
       />
       <div>
-        <h2>{name}</h2>
+        <h2>{capitalizedName}</h2>
       </div>
     </div>
   );
