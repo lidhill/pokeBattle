@@ -1,7 +1,7 @@
 // Pokemon.js
 import React from 'react';
 
-const Pokemon = ({ name, id, baseScore, isWinner, isLoser, isDraw }) => {
+const Pokemon = ({ name, id, baseScore, hasHighestBaseExperience }) => {
   const parsedId = parseInt(id, 10);
   let paddedId;
 
@@ -14,17 +14,14 @@ const Pokemon = ({ name, id, baseScore, isWinner, isLoser, isDraw }) => {
   }
 
   return (
-    <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5">
+    <div className={`tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5 ${hasHighestBaseExperience ? 'green-border' : ''}`}>
+      {hasHighestBaseExperience && <div className="win-text">Winner!</div>}
       <img
         src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedId}.png`}
         alt={name}
       />
-      <div className="result-text">
-        {isWinner ? 'Win' : isLoser ? 'Loss' : isDraw ? 'Draw' : ''}
-      </div>
       <div>
         <h2>{name}</h2>
-        <p>Base Score: {baseScore}</p>
       </div>
     </div>
   );

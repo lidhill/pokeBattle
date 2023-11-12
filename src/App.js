@@ -8,11 +8,13 @@ import './App.css';
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [randomPokemons, setRandomPokemons] = useState([]);
+  const [highestBaseExperiencePokemon, setHighestBaseExperiencePokemon] = useState(null);
+  const [battleResult, setBattleResult] = useState(null);
 
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=900');
         const data = await response.json();
 
         const pokemonDetails = await Promise.all(
@@ -44,27 +46,44 @@ function App() {
   }, []);
 
   const handleBattleButtonClick = () => {
-    // Trigger randomization/update logic here
     const randomIndexes = Array.from({ length: 2 }, () => Math.floor(Math.random() * pokemons.length));
     const randomPokemonSelection = randomIndexes.map(index => pokemons[index]);
+
+    // Identify the Pokemon with the highest base experience
+    const highestBaseExperiencePokemon = randomPokemonSelection.reduce((prev, current) =>
+      prev.base_experience > current.base_experience ? prev : current
+    );
+
+    // Check for a draw condition
+    const isDraw = randomPokemonSelection[0].base_experience === randomPokemonSelection[1].base_experience;
+
+    // Set a flag for the Pokemon with the highest base experience or mark it as a draw
+    setHighestBaseExperiencePokemon(isDraw ? null : highestBaseExperiencePokemon);
+    setBattleResult(isDraw ? 'draw' : 'battle');
+
+    // Update randomPokemons state
     setRandomPokemons(randomPokemonSelection);
   };
 
   return !randomPokemons.length ? (
-    <h1>Loading</h1>
+    <div className='tc' style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <h1 className='loading'>Loading</h1>
+    </div>
   ) : (
     <div className='tc'>
       <h1 className='f1'>PokeBattle</h1>
       <Scroll>
         {/* Display two random Pokemon */}
         <div className="random-pokemon-container">
-          {randomPokemons.map((pokemon) => (
-            <div key={pokemon.id} className="pokemon-container">
+          {randomPokemons.map((pokemon, index) => (
+            <div key={pokemon.id} className={`pokemon-container ${pokemon === highestBaseExperiencePokemon ? 'win' : ''} ${battleResult === 'draw' ? 'draw' : ''}`}>
               <Pokemon
                 id={pokemon.id}
                 name={pokemon.name}
                 baseScore={pokemon.base_experience}
+                hasHighestBaseExperience={pokemon === highestBaseExperiencePokemon && battleResult !== 'draw'}
               />
+              {battleResult === 'draw' && <div className="draw-text">Draw!</div>}
             </div>
           ))}
         </div>

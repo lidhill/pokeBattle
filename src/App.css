@@ -28,17 +28,52 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 2px solid transparent; /* Initial transparent border */
+  border: 2px solid transparent;
+  /* Initial transparent border */
 }
 
-.pokemon-container.win {
-  background-color: lightgreen; /* Change the background color for the win class */
+.green-border {
+  border: 5px solid green !important;
+  /* You may adjust the border style as needed */
 }
 
-.pokemon-container.loss {
-  background-color: lightcoral; /* Change the background color for the loss class */
+.win-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: bold;
+  color: green;
+  text-shadow: 2px 2px 2px #fff;
+  /* Add a subtle text shadow for better visibility */
 }
 
-.pokemon-container.draw {
-  background-color: lightyellow; /* Change the background color for the draw class */
+.draw-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 70px;
+  font-weight: bold;
+  color: #FF5733;
+  text-shadow: 2px 2px 2px #fff;
+  /* Add a subtle text shadow for better visibility */
+}
+
+.loading {
+  background: linear-gradient(90deg, #ff8a00, #e52e71, #0071e3, #00ffcf, #ff8a00);
+  background-size: 400% 400%;
+  color: transparent;
+  background-clip: text;
+  animation: gradientChange 3s linear infinite;
+}
+
+@keyframes gradientChange {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
