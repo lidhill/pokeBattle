@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pokeBattle/static/css/main.240dea80.css",
+    "main.js": "/pokeBattle/static/js/main.e8a4b86e.js",
+    "static/js/787.109d0c48.chunk.js": "/pokeBattle/static/js/787.109d0c48.chunk.js",
+    "static/media/SEGA.woff": "/pokeBattle/static/media/SEGA.47b4bfa94ef243af4a5b.woff",
+    "index.html": "/pokeBattle/index.html",
+    "main.240dea80.css.map": "/pokeBattle/static/css/main.240dea80.css.map",
+    "main.e8a4b86e.js.map": "/pokeBattle/static/js/main.e8a4b86e.js.map",
+    "787.109d0c48.chunk.js.map": "/pokeBattle/static/js/787.109d0c48.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.240dea80.css",
+    "static/js/main.e8a4b86e.js"
+  ]
+}
